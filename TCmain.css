@@ -1,0 +1,654 @@
+body {
+font-size:62.5%;
+}
+
+.lightboxshadow {
+box-shadow: 2px 2px 1px black;
+}
+
+.vertcenter {
+display:table-cell;
+vertical-align:middle;
+height:100%;
+width:100%;
+top:0;
+}
+
+.even {
+background-color:#191919;
+}
+
+.uneven {
+background-color:#080808;
+}
+
+.alliancebg {
+background: #09142a; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #09142a 0%, #223758 50%, #09142a 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#09142a), color-stop(50%,#223758), color-stop(100%,#09142a)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #09142a 0%,#223758 50%,#09142a 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #09142a 0%,#223758 50%,#09142a 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #09142a 0%,#223758 50%,#09142a 100%); /* IE10+ */
+background: linear-gradient(135deg,  #09142a 0%,#223758 50%,#09142a 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#09142a', endColorstr='#09142a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */ 
+}
+
+.hordebg {
+background: #282828; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #282828 0%, #565656 50%, #282828 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#282828), color-stop(50%,#565656), color-stop(100%,#282828)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #282828 0%,#565656 50%,#282828 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #282828 0%,#565656 50%,#282828 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #282828 0%,#565656 50%,#282828 100%); /* IE10+ */
+background: linear-gradient(135deg,  #282828 0%,#565656 50%,#282828 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#282828', endColorstr='#282828',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.noselect {
+-webkit-user-select: none;
+/* Chrome/Safari */
+-moz-user-select: none;
+/* Firefox */
+-ms-user-select: none;
+/* IE10+ */
+cursor:default;
+}
+
+.alliancetext {
+color:#ebd400;
+}
+
+.hordetext {
+color:#900100;
+}
+
+.alliancebgcolor {
+background-color:#ebd400;
+}
+
+.hordebgcolor {
+background-color:#900100;
+}
+
+.graybgcolor {
+background-color:#191919;
+}
+
+body, html {
+height:100%;
+width:100%;
+overflow-x:hidden;
+}
+
+#background {
+height:100%;
+width:100%;
+position:fixed;
+top:0;
+left:0;
+z-index:-2;
+}
+
+#bodywrapper {
+width:600px;
+position:absolute;
+display:block;
+top:165px;
+left:50%;
+margin-left:-300px;
+}
+
+#headerbg {
+height:92px;
+position:fixed;
+width:calc(100% + 10px);
+top:0;
+left:-10px;
+z-index:3;
+}
+
+#header {
+position:fixed;
+height:85px;
+width:calc(100% + 10px);
+top:0px;
+left:-10px;
+background-color:#080808;
+}
+
+#topmenu {
+display:flex;
+justify-content:space-between;
+top:0%;
+height:100%;
+width:600px;
+position:absolute;
+left:50%;
+margin-left:-300px;
+}
+
+.menuitem {
+width:25%;
+height:105%;
+cursor:pointer;
+}
+
+a {
+color:inherit;
+}
+
+.menuitem a {
+text-decoration:none;
+}
+
+.itemicon {
+height:50%;
+width:100%;
+}
+
+.itemicon i {
+position:relative;
+top:25%;
+}
+
+.itemlabel {
+height:50%;
+width:100%;
+}
+#guildinfo {
+height:100%;
+width:25%;
+left:0;
+display:block;
+position:absolute;
+}
+
+#guildname {
+height:60%;
+width:100%;
+display:table;
+position:absolute;
+}
+
+#serverinfo {
+height:40%;
+top:50%;
+width:100%;
+display:block;
+position:absolute;
+left:0;
+}
+
+#guildserver {
+display:inline-table;
+vertical-align:top;
+position:relative;
+width:100%;
+height:100%;
+top:0;
+left:0;
+}
+
+.guildregion {
+display:inline-block;
+left:5px;
+position:relative;
+}
+
+#factionlogo {
+height:100%;
+width:4%;
+background-position:center right;
+background-repeat:no-repeat;
+left:96%;
+position:relative;
+}
+
+.alliance {
+background-image:url("img/alliance2.png");
+}
+
+.horde {
+background-image:url("img/horde2.png");
+}
+
+.contentheader {
+left:0;
+position:relative;
+}
+
+.small-header {
+top:5px;
+left:2%;
+width:49%;
+display:inline-block;
+position:relative;
+}
+
+#loaderwrapper {
+height:auto;
+top:50px;
+width:100%;
+position:relative;
+display:block;
+text-align:center;
+}
+
+#loaderwrapper i {
+margin-top:40px;
+line-height:20pt;
+position:relative;
+display:block;
+}
+
+.bossicon_overlay {
+height:75px;
+width:100%;
+background-size:40% 45%;
+background-position:center center;
+background-repeat:no-repeat;
+position:absolute;
+display:none;
+background-image:url("img/skull.png");
+z-index:2;
+opacity:0.7;
+}
+
+.bossicon {
+height:75px;
+width:100%;
+background-size:70% 70%;
+background-position:center center;
+background-repeat:no-repeat;
+position:relative;
+display:block;
+}
+
+.down .bossicon_overlay {
+display:block;
+}
+
+.down .bossicon {
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+-ms-filter: grayscale(100%);
+-o-filter: grayscale(100%);
+filter: grayscale(100%);
+filter: url(grayscale.svg); /* Firefox 4+ */
+filter: gray; /* IE 6-9 */
+}
+
+.down .bossname {
+text-decoration:line-through;
+}
+
+.bossname {
+position:relative;
+display:inline-table;
+top:60%;
+height:40%;
+width:100%;
+text-align:center;
+}
+
+.contentbox {
+width:96%;
+left:2%;
+position:relative;
+padding-top:10px;
+padding-bottom:10px;
+display:block;
+}
+
+.dropdown {
+cursor:pointer;
+width:100%;
+height:35px;
+background-color:#080808;
+margin-bottom:5px;
+text-align:center;
+}
+
+.anchorstylebar {
+width:100%;
+position:absolute;
+top:30px;
+height:5px;
+}
+
+.dropdown-content {
+width:100%;
+background-color:#080808;
+margin-bottom:10px;
+position:relative;
+display:none;
+}
+
+.tableheader {
+font-weight:bold;
+padding-top:5px;
+padding-bottom:5px;
+display:table;
+width:100%;
+}
+
+.flextablerow {
+padding-top:5px;
+padding-bottom:5px;
+display:table;
+width:100%;
+}
+
+.flextable-row .tableheader {
+justify-content:flex-start;
+}
+
+.flextablecol {
+vertical-align:top;
+position:relative;
+display:inline-table;
+text-align:center;
+height:100%;
+}
+
+.threecol .flextablerow .flextablecol {
+width:33.3%;
+}
+
+.fourcol .flextablerow .flextablecol {
+width:25%;
+}
+
+.sevencol .flextablecol {
+width:13.9%;
+}
+
+.flextable {
+justify-content:space-between;
+box-sizing:border-box;
+border-left:5px solid #191919;
+border-right:5px solid #191919;
+border-bottom:5px solid #191919;
+margin-bottom:10px;
+margin-top:10px;
+width:100%;
+display:flex;
+}
+
+.flextable-column {
+flex-direction:column;
+}
+
+.flextable-row {
+flex-direction:row;
+}
+
+.flextable-row .flextablerow {
+display:flex;
+justify-content:space-between;
+}
+
+.toggletable {
+display:none;
+}
+
+.toggletableheader {
+display:block;
+height:20px;
+width:100%;
+cursor:pointer;
+font-weight:bold;
+padding-bottom:5px;
+}
+
+.dkpitemicon {
+height:60px;
+width:60px;
+background-size:40% 90%;
+background-position:center center;
+background-repeat:no-repeat;
+position:relative;
+display:inline-block;
+vertical-align:top;
+}
+
+.contentwrapper {
+height:auto;
+width:100%;
+position:relative;
+margin-bottom:40px;
+display:block;
+}
+
+#dkplist {
+margin-top:10px;
+height:90%;
+width:100%;
+position:relative;
+display:flex;
+display:none;
+flex-direction:column;
+}
+
+#dkplistheader {
+position:relative;
+display:block;
+margin-top:60px;
+margin-bottom:10px;
+}
+
+.member {
+-webkit-user-select: none;
+/* Chrome/Safari */
+-moz-user-select: none;
+/* Firefox */
+-ms-user-select: none;
+/* IE10+ */
+width:100%;
+height:100px;
+background-color:#080808;
+margin-bottom:10px;
+position:relative;
+cursor:pointer;
+}
+
+.classbar {
+height:100%;
+width:2%;
+left:0;
+position:absolute;
+display:block;
+opacity:0.8;
+}
+
+.dkprank {
+height:76%;
+top:12%;
+width:5%;
+left:-7%;
+position:absolute;
+display:table;
+}
+
+.classiconwrapper {
+height:50%;
+width:9%;
+left:2%;
+position:absolute;
+display:table;
+}
+
+.classicon {
+height:100%;
+width:100%;
+background-size:70% 70%;
+background-position:center center;
+background-repeat:no-repeat;
+position:relative;
+}
+
+.namewrapper {
+height:50%;
+width:80%;
+left:11%;
+position:absolute;
+display:table;
+}
+
+.name {
+display:table-cell;
+}
+
+.dkpwrapper {
+top:50%;
+height:50%;
+width:9%;
+left:91%;
+position:absolute;
+display:table;
+}
+
+.dkp {
+display:table-cell;
+}
+
+.raidrankwrapper {
+height:50%;
+width:9%;
+left:91%;
+display:table;
+position:absolute;
+}
+
+.raidrank {
+height:100%;
+width:100%;
+background-size:50% 50%;
+background-position:center 30%;
+background-repeat:no-repeat;
+position:relative;
+}
+
+.ranktext {
+width:100%;
+top:70%;
+position:absolute;
+height:30%;
+}
+
+.infowrapper {
+top:50%;
+height:50%;
+width:89%;
+left:2%;
+position:absolute;
+display:table;
+}
+
+.rolewrapper {
+top:50%;
+height:50%;
+width:9%;
+left:2%;
+position:absolute;
+display:table;
+}
+
+.roleicon {
+height:100%;
+width:100%;
+background-size:70% 70%;
+background-position:center center;
+background-repeat:no-repeat;
+position:relative;
+}
+
+.specwrapper {
+top:50%;
+height:50%;
+width:80%;
+left:11%;
+position:absolute;
+display:table;
+}
+
+.membersub {
+background-color:#080808;
+width:100%;
+top:0;
+height:150px;
+position:relative;
+display:none;
+margin-bottom:10px;
+}
+
+.lootwrapper {
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+position:absolute;
+height:78%;
+top:2rem;
+width:47%;
+left:2%;
+overflow:hidden;
+}
+
+.statswrapper {
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+position:absolute;
+height:78%;
+top:2rem;
+width:47%;
+left:51%;
+overflow:hidden;
+}
+
+.statsitem {
+height:20%;
+width:100%;
+margin-right:5px;
+white-space:nowrap;
+overflow:hidden;
+}
+
+.lootitem {
+height:20%;
+width:100%;
+margin-right:5px;
+white-space:nowrap;
+overflow:hidden;
+}
+
+.lootitem a {
+height:100%;
+width:100%;
+}
+
+#videowrapper {
+display:none;
+}
+
+.video {
+margin-top:10px;
+width:600px;
+height:355px;
+background-color:#080808;
+margin-bottom:50px;
+display:table;
+}
+
+.video iframe {
+margin:0 auto;
+display:block;
+}
+
+#contactwrapper {
+display:none;
+}
+
+#parserbuffer {
+display:none;
+}

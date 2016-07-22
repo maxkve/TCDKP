@@ -1,0 +1,409 @@
+/* Generate guild */
+var GUILD = new Guild("Three Crowns");
+
+/* Guildmembers */
+var MEMBERCLASSES = {Evilzealot:"paladin", Zorn:"warrior", Ohhstar:"druid", Boyakíng:"paladin", Flata:"paladin", Hanke:"hunter", Bridgeburner:"shaman", Muppetmaster:"warlock", Zworn:"deathknight", Hicky:"druid", Eostra:"warlock", Safeword:"shaman", Barkbit:"warrior", Wezzi:"warrior"};
+var MEMBERS = {};
+
+function MRT_parser(obj){
+	for (i = 0; i < obj.length; i++) {
+		/* Log to parserbuffer */
+		jQuery("#parserbuffer").html(obj[i]["raiddata"]);
+		
+		/* Gather data for each raiddata-instance */
+		GUILD.raids += 1;
+		parse_raid_attendance();
+		parse_boss_encounters();
+		parse_loot();
+	}
+	/* Append last raiddata-instance to #lastraid div */
+	jQuery("#lastraid").html(obj[obj.length-1]["raiddata"]);
+	
+	/* Run loot calcs based on gathered loot */
+	calc_lootcosts();
+	
+	/* Render DKP standings */
+	render_dkplist(MEMBERS);
+	render_memberlootlist(MEMBERS);
+	render_memberraidstats(MEMBERS);
+	
+	$WowheadPower.refreshLinks();
+	memberdd_listener();
+}
+
+function parse_raid_attendance() {
+	uniquenames = [];
+	jQuery(".bossData .attendees").each(function() {
+		/* Get attendance list for bosses */
+		cvs = jQuery(this).html();
+		nospacecvs = cvs.replace(/ /g,'');
+		bossattendance = CVS_parser(nospacecvs);
+		
+		/* Get list of unique names */
+		for (x = 0; x < bossattendance[0].length; x++) {
+			var name = bossattendance[0][x];
+			if (uniquenames.indexOf(name) == -1) {
+				uniquenames.push(name);
+				calc_addraid(name);
+			}
+			else {
+			}
+		}
+	});
+	/* Grant DKP for each name in list */
+	for (n = 0; n < uniquenames.length; n++) {
+		calc_grantdkp(uniquenames[n],RAIDATTEND);
+	}
+}
+
+function parse_boss_encounters() {
+	jQuery(".bossData .attendees").each(function() {
+		/* Get attendance list for bosses */
+		var bossname = jQuery(this).parent().parent().find(".name").html();
+		var bossdiff = jQuery(this).parent().parent().find(".difficulty").html();
+		cvs = jQuery(this).html();
+		nospacecvs = cvs.replace(/ /g,'');
+		bossattendance = CVS_parser(nospacecvs);
+		
+		if (bossdiff == "Normal") { /* Normal boss */
+			if (GUILD.killedbosses.indexOf(bossname) == -1) { /* New boss */
+			GUILD.firstkills += 1;
+				for (z = 0; z < bossattendance[0].length; z++) {
+					calc_grantdkp(bossattendance[0][z],NEWBOSS);
+					calc_addbosskill(bossattendance[0][z],"normal","newkill");
+				}
+			GUILD.killedbosses.push(bossname);
+			}
+			else { /* Farmboss */
+			GUILD.bosskills += 1;
+				for (y = 0; y < bossattendance[0].length; y++) {
+					calc_grantdkp(bossattendance[0][y],FARMBOSS);
+					calc_addbosskill(bossattendance[0][y],"normal","farm");
+				}
+			}	
+		}
+		else { /* Heroic */
+			if (GUILD.hckilledbosses.indexOf(bossname) == -1) { /* New boss */
+			GUILD.firsthckills += 1;
+				for (z = 0; z < bossattendance[0].length; z++) {
+					calc_grantdkp(bossattendance[0][z],HCNEWBOSS);
+					calc_addbosskill(bossattendance[0][z],"heroic","newkill");
+				}
+			GUILD.hckilledbosses.push(bossname);
+			}
+			else { /* Farmboss */
+			GUILD.hcbosskills += 1;
+				for (y = 0; y < bossattendance[0].length; y++) {
+					calc_grantdkp(bossattendance[0][y],HCFARMBOSS);
+					calc_addbosskill(bossattendance[0][y],"heroic","farm");
+				}
+			}
+		}
+	});
+}
+
+function parse_loot() {
+	jQuery(".bossData .loot li").each(function() {
+		var name = jQuery(this).children(".looter").html();
+		var href = jQuery(this).children("a").attr("href");
+		var itemname = jQuery(this).children("a").html();
+		var dkpvalue = jQuery(this).children(".value").html();
+		value = dkpvalue.substring(0, dkpvalue.length-4);
+		calc_addloot(name,href,itemname,parseInt(value));
+	});
+}
+
+function Guild(name) {
+	this.name = name;
+	this.raids = 0;
+	this.killedbosses = [];
+	this.hckilledbosses = [];
+	this.bosskills = 0;
+	this.hcbosskills = 0;
+	this.firstkills = 0;
+	this.hcfirstkills = 0;
+}
+
+function Member(name) {
+	this.name = name;
+	this.dkp = 0;
+	this.pclass = MEMBERCLASSES[name];
+	this.raids = 0;
+	this.bosskills = 0;
+	this.hcbosskills = 0;
+	this.firstkills = 0;
+	this.hcfirstkills = 0;
+	this.loot = [];
+	this.rank = "raider";
+}
+
+function create_members(arr) {
+	for (i = 0; i < arr.length; i++) {
+		var name = arr[i];
+		MEMBERS[name] = new Member(name);
+	}
+}
+
+function calc_addraid(name) {
+	MEMBERS[name].raids += 1;
+}
+
+function calc_lootcosts() {
+	/* Check looted items for all members and deduct DKP according to costs */
+	var keys = Object.keys(MEMBERCLASSES);
+	for (i = 0; i < keys.length; i++) {
+		name = keys[i];
+		for (y = 0; y < MEMBERS[name].loot.length; y++) {
+			cost = MEMBERS[name].loot[y][2];
+			calc_deductdkp(name,cost);
+		}
+	}
+}
+
+function calc_addloot(name,href,itemname,value) {
+	if (name != "disenchanted" || name != "bank") {
+		MEMBERS[name].loot.push([href,itemname,value]);
+	}
+	else {
+		/* Item was disenchanted or banked */
+	}
+}
+
+function calc_addbosskill(name,mode,status) {	
+	if (mode == "normal") { /* Normal */
+		if (status == "newkill") { /* First kill */
+			MEMBERS[name].firstkills += 1;
+		}
+		else { /* Farm kill */
+			MEMBERS[name].bosskills += 1;
+		}
+	}
+	if (mode == "heroic") { /* Heroic */
+		if (status == "newkill") { /* First HC kill */
+			MEMBERS[name].hcfirstkills += 1;
+		}
+		else { /* HC farm kill */
+			MEMBERS[name].hcbosskills += 1;
+		}
+	}
+}
+
+function calc_deductdkp(name,amount) {
+	MEMBERS[name].dkp -= amount;
+}
+
+function calc_grantdkp(name,amount) {
+	MEMBERS[name].dkp += amount;
+}
+
+function render_dkplist(obj) {
+	var dkplist = [];
+	var keys = Object.keys(obj);
+	for (i = 0; i < keys.length; i++) {
+		name = keys[i];
+		dkp = MEMBERS[name].dkp;
+		dkplist[name] = dkp;
+	}
+	var sorted_dkplist = getSortedKeys(dkplist);
+
+	for (i = 0; i < sorted_dkplist.length; i++) {
+		var name = sorted_dkplist[i];
+		var memberclass = MEMBERS[name].pclass;
+		var dkp = MEMBERS[name].dkp;
+		var raidrank = create_raidrankhtml(name);
+		inject_dkpentry(name,memberclass,dkp,i+1,raidrank);
+	}
+}
+
+function create_raidrankhtml(name) { /*TODO: Gör klart */
+	return "<img src=\"img/raider.png\"></img>";
+}
+
+function memberdd_listener() {
+	jQuery(".member").click(function() {
+		thisname = jQuery(this).attr("id");
+		jQuery("#"+thisname+"_sub").slideToggle(150);
+	});
+}
+
+function render_memberlootlist(obj) {
+	var keys = Object.keys(obj); 
+	for (i = 0; i < keys.length; i++) {
+		name = keys[i];
+		if (MEMBERS[name].loot.length > 0) {
+			var lootcount = MEMBERS[name].loot.length;
+			for (y = 0; y < lootcount; y++) { /* TODO: Dubbelkolla så att det faktiskt blir senaste looten och inte tidigaste */
+				if (y < 5) {
+					href = MEMBERS[name].loot[y][0];
+					itemname = MEMBERS[name].loot[y][1];
+					inject_lootitem(name,itemname,href);
+				}
+			}
+		}
+		else {
+			inject_lootitem(name,"No loot to show","http://www.wowhead.com/");
+		}
+	}
+}
+
+function render_memberraidstats(obj) {
+	var keys = Object.keys(obj); 
+	for (i = 0; i < keys.length; i++) { 
+		name = keys[i];
+		inject_stat(name,MEMBERS[name].hcfirstkills,"hcfirstdowns");
+		inject_stat(name,MEMBERS[name].hcbosskills,"hcbosskills");
+		inject_stat(name,MEMBERS[name].firstkills,"firstdowns");
+		inject_stat(name,MEMBERS[name].bosskills,"bosskills");
+		inject_stat(name,MEMBERS[name].raids,"raidattends");
+	}
+}
+
+function inject_stat(name,value,stattype) {
+	if (stattype == "firstdowns") {
+		jQuery("#"+name+"_sub").children(".statswrapper").append("<div class=\"statsitem\"><i class=\"fa fa-star silver\"></i> First Bosskills: "+value+"</div>");
+	}
+	if (stattype == "hcfirstdowns") {
+		jQuery("#"+name+"_sub").children(".statswrapper").append("<div class=\"statsitem\"><i class=\"fa fa-star gold\"></i> First HC Bosskills: "+value+"</div>");
+	}
+	if (stattype == "bosskills") {
+		jQuery("#"+name+"_sub").children(".statswrapper").append("<div class=\"statsitem\"><i class=\"fa fa-star-o silver\"></i> Bosskills: "+value+"</div>");
+	}
+	if (stattype == "hcbosskills") {
+		jQuery("#"+name+"_sub").children(".statswrapper").append("<div class=\"statsitem\"><i class=\"fa fa-star-o gold\"></i> HC Bosskills: "+value+"</div>");
+	}
+	if (stattype == "raidattends") {
+		jQuery("#"+name+"_sub").children(".statswrapper").append("<div class=\"statsitem\"><i class=\"fa fa-check silver\"></i> Raids: "+value+"</div>");
+	}
+}
+
+function inject_lootitem(name,itemname,href) {
+	jQuery("#"+name+"_sub").children(".lootwrapper").append("<div class=\"lootitem\"><a href=\""+href+"\">"+itemname+"</a></div>");
+}
+
+function inject_dkpentry(name,classinput,dkp,dkprank,raidrank) {
+	outputhtml = "<div class=\"member "+classinput+" lightboxshadow\" id=\""+name+"\">"+
+		"<div class=\"dkprank\"><div class=\"vertcenter\">#"+dkprank+"</div></div>"+
+		"<div class=\"classiconwrapper\"><div class=\"classicon\"></div></div>"+
+		"<div class=\"namewrapper\"><div class=\"vertcenter name\">"+name+"</div></div>"+
+		"<div class=\"dkpwrapper\"><div class=\"vertcenter dkp\">"+dkp+"</div></div>"+
+		"<div class=\"raidrank\"><div class=\"vertcenter\">"+raidrank+"</div></div>"+
+		"<div class=\"armorylink\"><a class=\"disabled\" href=\"http://eu.battle.net/wow/en/character/neptulon/"+name+"/simple\"><img src=\"img/wow.png\"></img></a></div>"+
+	"</div>"+
+	"<div class=\"membersub lightboxshadow\" id=\""+name+"_sub\">"+
+	"<span class=\"small-header\">Latest Loot</span>"+
+	"<div class=\"lootwrapper\">"+
+	"</div>"+
+	"<span class=\"small-header\">Raid Stats</span>"+
+	"<div class=\"statswrapper\">"+
+	"</div>"+
+	"</div>";
+	jQuery("#dkplist").append(outputhtml);
+}
+
+function getSortedKeys(obj) {
+	/* Snippet */
+    var keys = []; for(var key in obj) keys.push(key);
+    return keys.sort(function(a,b){return obj[b]-obj[a]});
+}
+
+function CVS_parser(strData, strDelimiter) {
+	/* Snippet */
+	// This will parse a delimited string into an array of
+	// arrays. The default delimiter is the comma, but this
+	// can be overriden in the second argument.
+	// Check to see if the delimiter is defined. If not,
+	// then default to comma.
+	strDelimiter = (strDelimiter || ",");
+
+	// Create a regular expression to parse the CSV values.
+	var objPattern = new RegExp(
+		(
+			// Delimiters.
+			"(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+
+			// Quoted fields.
+			"(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+
+			// Standard fields.
+			"([^\"\\" + strDelimiter + "\\r\\n]*))"
+		),
+		"gi"
+		);
+
+
+	// Create an array to hold our data. Give the array
+	// a default empty first row.
+	var arrData = [[]];
+
+	// Create an array to hold our individual pattern
+	// matching groups.
+	var arrMatches = null;
+
+
+	// Keep looping over the regular expression matches
+	// until we can no longer find a match.
+	while (arrMatches = objPattern.exec( strData )){
+
+		// Get the delimiter that was found.
+		var strMatchedDelimiter = arrMatches[ 1 ];
+
+		// Check to see if the given delimiter has a length
+		// (is not the start of string) and if it matches
+		// field delimiter. If id does not, then we know
+		// that this delimiter is a row delimiter.
+		if (
+			strMatchedDelimiter.length &&
+			(strMatchedDelimiter != strDelimiter)
+			){
+
+			// Since we have reached a new row of data,
+			// add an empty row to our data array.
+			arrData.push( [] );
+
+		}
+
+
+		// Now that we have our delimiter out of the way,
+		// let's check to see which kind of value we
+		// captured (quoted or unquoted).
+		if (arrMatches[ 2 ]){
+
+			// We found a quoted value. When we capture
+			// this value, unescape any double quotes.
+			var strMatchedValue = arrMatches[ 2 ].replace(
+				new RegExp( "\"\"", "g" ),
+				"\""
+				);
+
+		} else {
+
+			// We found a non-quoted value.
+			var strMatchedValue = arrMatches[ 3 ];
+
+		}
+
+
+		// Now that we have our value string, let's add
+		// it to the data array.
+		arrData[ arrData.length - 1 ].push( strMatchedValue );
+	}
+
+	// Return the parsed data.
+	return( arrData );
+}
+
+function init_tabletop() {
+	Tabletop.init({ 
+	key: "1Z4qK7DVFPLWjiJKSwzqKGMiO3IGduZck9Du9Ipc1K9s",
+	callback: function(data) { MRT_parser(data) },
+	simpleSheet: true
+	});
+}
+
+function run_scripts() {
+	/* Create members */
+	create_members(Object.keys(MEMBERCLASSES));
+	
+	/* Get data and start parser */
+	init_tabletop();
+}

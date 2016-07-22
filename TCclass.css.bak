@@ -1,0 +1,207 @@
+.deathknight {
+color:#C41F3B;
+}
+
+.deathknight .classicon {
+background-image:url("img/dk.png");
+}
+
+.deathknight .classbar {
+background-color:#C41F3B;
+}
+
+.warrior {
+color:#C79C6E;
+}
+
+.warrior .classicon {
+background-image:url("img/warrior.png");
+}
+
+.warrior .classbar {
+background-color:#C79C6E;
+}
+
+.mage  {
+color:#69CCF0;
+}
+
+.mage .classicon {
+background-image:url("img/mage.png");
+}
+
+.mage .classbar {
+background-color:#69CCF0;
+}
+
+.druid  {
+color:#FF7D0A;
+}
+
+.druid .classicon {
+background-image:url("img/druid.png");
+}
+
+.druid .classbar {
+background-color:#FF7D0A;
+}
+
+.hunter .namewrapper  {
+color:#ABD473;
+}
+
+.hunter .classicon {
+background-image:url("img/hunter.png");
+}
+
+.kargath .bossicon {
+background-image:url("img/kargath.png");
+}
+
+.butcher .bossicon {
+background-image:url("img/butcher.png");
+}
+
+.brackenspore .bossicon {
+background-image:url("img/brackenspore.png");
+}
+
+.tectus .bossicon {
+background-image:url("img/tectus.png");
+}
+
+.ogron .bossicon {
+background-image:url("img/ogron.png");
+}
+
+.koragh .bossicon {
+background-image:url("img/koragh.png");
+}
+
+.margok .bossicon {
+background-image:url("img/margok.png");
+}
+
+.hunter .classbar {
+background-color:#ABD473;
+}
+
+.monk  {
+color:#00FF96;
+}
+
+.monk .classicon {
+background-image:url("img/monk.png");
+}
+
+.monk .classbar {
+background-color:#00FF96;
+}
+
+.paladin  {
+color:#F58CBA;
+}
+
+.paladin .classicon {
+background-image:url("img/paladin.png");
+}
+
+.paladin .classbar {
+background-color:#F58CBA;
+}
+
+.priest  {
+color:#FFFFFF;
+}
+
+.priest .classicon {
+background-image:url("img/priest.png");
+}
+
+.priest .classbar {
+background-color:#FFFFFF;
+}
+
+.rogue  {
+color:#FFF569;
+}
+
+.rogue .classicon {
+background-image:url("img/rogue.png");
+}
+
+.rogue .classbar {
+background-color:#FFF569;
+}
+
+.shaman  {
+color:#0070DE;
+}
+
+.shaman .classicon {
+background-image:url("img/shaman.png");
+}
+
+.shaman .classbar {
+background-color:#0070DE;
+}
+
+.warlock  {
+color:#9482C9;
+}
+
+.warlock .classicon {
+background-image:url("img/warlock.png");
+}
+
+.warlock .classbar {
+background-color:#9482C9;
+}
+
+.alt .raidrank {
+background-image:url("img/alt.png");
+}
+
+.casual .raidrank {
+background-image:url("img/casual.png");
+}
+
+.raider .raidrank {
+background-image:url("img/raider.png");
+}
+
+.DPS {
+background-image:url("img/dps.png");
+}
+
+.HEALING {
+background-image:url("img/healer.png");
+}
+
+.TANK {
+background-image:url("img/tank.png");
+}
+
+#tier .dkpitemicon {
+background-image:url("img/tier.png");
+}
+
+#notier .dkppriceicon {
+background-image:url("img/notier.png");
+}
+
+#onehand .dkppriceicon {
+background-image:url("img/1h.png");
+}
+
+#twohand .dkppriceicon {
+background-image:url("img/2h.png");
+}
+
+#offhand .dkppriceicon {
+background-image:url("img/offhand.png");
+}
+
+#accessory .dkppriceicon {
+background-image:url("img/accessory.png");
+}

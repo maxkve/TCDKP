@@ -1,0 +1,113 @@
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+/* Styles */
+
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+/* Styles */
+	#guildinfo {
+	display:none;
+	}
+	#bodywrapper {
+	width:600px;
+	position:absolute;
+	display:block;
+	top:165px;
+	left:50%;
+	margin-left:-300px;
+	}
+	.dropdown {
+	height:55px;
+	}
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+/* Styles */
+	#guildinfo {
+	display:none;
+	}
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+/* Styles */
+	.largetext {
+	font-size:1.2rem;
+	}
+	#bodywrapper {
+	left:40%;
+	}
+	#topmenu {
+	left:40%;
+	}
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+	.largetext {
+	font-size:1.2rem;
+	}
+	#guildinfo {
+	display:none;
+	}
+	#bodywrapper {
+	left:50%;
+	margin-left:-300px;
+	}
+	#topmenu {
+	left:50%;
+	margin-left:-300px;
+	}
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+	.largetext {
+	font-size:1.2rem;
+	}
+	#guildinfo {
+	display:none;
+	}
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+	.largetext {
+	font-size:1.6rem;
+	}
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
+

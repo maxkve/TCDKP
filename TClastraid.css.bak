@@ -1,0 +1,106 @@
+.raidExport {
+color:#F0F0F0;
+}
+
+.headline { /* Raid name and date */
+padding-top:3px;
+font-size:1.4rem;
+display:block;
+width:100%;
+text-indent:6px;
+position:relative;
+margin-bottom:10px;
+border-bottom:2px solid #2b2b2b;
+}
+
+.zone { /* Raid name */
+display:block;
+}
+
+.start { /* Raid date */
+top:0px;
+display:block;
+position:relative;
+font-size:0.8rem;
+}
+
+.bossData {
+position:relative;
+height:150px;
+margin-bottom:10px;
+border-bottom:2px solid #2b2b2b;
+}
+
+.boss {
+height:30%;
+display:inline-block;
+width:50%;
+position:absolute;
+text-indent:6px;
+}
+
+.boss .name {
+font-size:1.4rem;
+display:block;
+}
+
+.boss .difficulty {
+font-size:0.8rem;
+text-indent:6px;
+display:block;
+}
+
+.info {
+text-indent:6px;
+height:70%;
+display:inline-block;
+width:50%;
+top:30%;
+position:absolute;
+}
+
+.label { /* Attendees titel */
+font-size:1.4rem;
+display:block;
+}
+
+.attendees {
+text-indent:0;
+padding-left:6px;
+display:block;
+font-size:0.8rem;
+}
+
+.loot {
+height:100%;
+display:inline-block;
+width:50%;
+left:50%;
+position:absolute;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+.loot ul {
+list-style:none;
+left:-40px;
+position:absolute;
+font-size:0.6rem;
+}
+
+.loot ul li {
+margin-bottom:2px;
+font-size:0.8rem;
+}
+
+.loot .value {
+display:inline-block;
+margin-left:2px;
+margin-right:2px;
+font-size:0.8rem;
+}
+
+.loot .looter {
+font-size:0.8rem;
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>Three Crowns</title>
+		
+		<!-- CSS -->
+		<link href='//fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="vendor/fa/css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="TCmain.css"/>
+		<link rel="stylesheet" type="text/css" href="TCclass.css"/>
+		<link rel="stylesheet" type="text/css" href="TClastraid.css"/>
+		<link rel="stylesheet" type="text/css" href="TCtype.css"/>
+		<link rel="stylesheet" type="text/css" href="TCmedia.css"/>
+		
+		<!-- JS -->		
+		<script src="vendor/js/jquery-1.11.1.min.js"></script>
+		<script src="vendor/js/tabletop.js"></script>
+		<script src="//static.wowhead.com/widgets/power.js" type="text/javascript"></script>
+		<script>var wowhead_tooltips = { "colorlinks": true, "iconizelinks": true, "renamelinks": true }</script>
+		<script src="TCoptions.js"></script>
+		<script src="TCmain.js"></script>
+			
+	</head>
+	<body>
+	<div id="background" class=""></div>
+	<div id="headerbg" class="noselect lightboxshadow">
+		<div id="header" class="lightboxshadow white sans">
+			<div id="guildinfo">
+				<div id="guildname" class="largetext"><div class="vertcenter"><i class="fa fa-angle-left"></i> Three Crowns <i class="fa fa-angle-right"></i></div></div>
+				<div id="serverinfo">
+					<div id="guildserver" class="mediumtext"><div class="vertcenter">Neptulon<span class="guildregion smalltext">EU</span></div></div>
+				</div>
+			</div>
+			<div id="topmenu" class="largeicons">
+				<div class="menuitem white" onclick="change_page('#raidwrapper')">
+					<div class="itemicon"><i class="fa fa-th-list"></i></div>
+					<div class="itemlabel smalltext">Raiding</div>
+				</div>
+				<div class="menuitem white" onclick="change_page('#videowrapper')">
+					<div class="itemicon"><i class="fa fa-youtube"></i></div>
+					<div class="itemlabel smalltext">Videos</div>
+				</div>
+				<div class="menuitem white" onclick="change_page('#contactwrapper')">
+					<div class="itemicon"><i class="fa fa-envelope"></i></i></div>
+					<div class="itemlabel smalltext">Kontakt</div>
+				</div>	
+			</div>	
+			<div id="factionlogo" class=""></div>
+		</div>
+	</div>
+	<div id="bodywrapper" class="noselect">
+		<div id="raidwrapper">
+			<div id="progress" class="contentwrapper">
+				<div class="dropdown mediumtext white sans">Progress <i class="fa gold fa-caret-down fa-caret-right"></i>
+					<div class="anchorstylebar graybgcolor"></div>
+				</div>
+				<div class="dropdown-content">
+					<div class="contentbox white sans smalltext">
+						<p>Guildens nuvarande raidprogress.</p>
+						<div class="toggletableheader smalltext white sans">
+							Highmaul <i class="fa gold fa-caret-down fa-caret-right"></i>
+						</div>	
+						<div class="flextable flextable-row sevencol toggletable tinytext">
+							<div class="tableheader even"><div class="vertcenter"><i class="fa fa-star silver"></i> Normal 7/7</div></div>
+							<div class="flextablecol kargath down">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">Kargath Bladefist</div></div>
+							</div>
+							<div class="flextablecol butcher down">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">The Butcher</div></div>
+							</div>
+							<div class="flextablecol brackenspore down">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">Bracken-spore</div></div>
+							</div>
+							<div class="flextablecol tectus down">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">Tectus</div></div>
+							</div>
+							<div class="flextablecol ogron down">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">Twin Ogron</div></div>
+							</div>
+							<div class="flextablecol koragh down">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">Ko'ragh</div></div>
+							</div>
+							<div class="flextablecol margok down">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">Imperator Mar'gok</div></div>
+							</div>
+						</div>
+						<div class="flextable flextable-row sevencol toggletable tinytext">
+							<div class="tableheader even"><div class="vertcenter"><i class="fa fa-star gold"></i> Heroic 3/7</div></div>
+							<div class="flextablecol kargath down">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">Kargath Bladefist</div></div>
+							</div>
+							<div class="flextablecol butcher">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">The Butcher</div></div>
+							</div>
+							<div class="flextablecol brackenspore down">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">Bracken-spore</div></div>
+							</div>
+							<div class="flextablecol tectus">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">Tectus</div></div>
+							</div>
+							<div class="flextablecol ogron down">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">Twin Ogron</div></div>
+							</div>
+							<div class="flextablecol koragh">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">Ko'ragh</div></div>
+							</div>
+							<div class="flextablecol margok">
+								<div class="bossicon_overlay"></div>
+								<div class="bossicon"></div>
+								<div class="bossname"><div class="vertcenter">Imperator Mar'gok</div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div id="dkp" class="contentwrapper">
+				<div id="dkprules">
+					<div class="dropdown mediumtext white sans">
+						Regler för DKP <i class="fa gold fa-caret-down fa-caret-right"></i>
+						<div class="anchorstylebar graybgcolor"></div>
+					</div>
+					<div class="dropdown-content">
+						<div class="contentbox white sans smalltext">
+							<p>TC använder ett DKP-system med fasta kostnader och utdelningar. När ett item droppar får den med mest DKP köpa itemet för den fasta kostnaden. 
+							Medlemmar som är med på över hälften av raidsen (Raiders) prioriteras över andra medlemmar (Casuals, Alts, etc.). BoE items köps på samma sätt som andra 
+							items, med kravet att de måste användas av köparen.</p>
+							<p>DKP delas ut enligt följande:</p>
+							<div id="dkppricetable" class="flextable flextable-column threecol">
+								<div class="flextablerow tableheader even">
+									<div class="flextablecol"><div class="vertcenter">Event</div></div>
+									<div class="flextablecol"><div class="vertcenter">Normal</div></div>
+									<div class="flextablecol"><div class="vertcenter">Heroic</div></div>
+								</div>
+								<div class="flextablerow uneven">
+									<div class="flextablecol"><div class="vertcenter">Attend</div></div>
+									<div class="flextablecol"><div class="vertcenter">6</div></div>
+									<div class="flextablecol"><div class="vertcenter">6</div></div>
+								</div>
+								<div class="flextablerow even">
+									<div class="flextablecol"><div class="vertcenter">Guild-first kill</div></div>
+									<div class="flextablecol"><div class="vertcenter">4</div></div>
+									<div class="flextablecol"><div class="vertcenter">6</div></div>
+								</div>
+								<div class="flextablerow uneven">
+									<div class="flextablecol"><div class="vertcenter">Farmkill</div></div>
+									<div class="flextablecol"><div class="vertcenter">2</div></div>
+									<div class="flextablecol"><div class="vertcenter">3</div></div>
+								</div>
+							</div>
+
+							<p>Varje item har en fast kostnad beroende på raid och itemtyp.</p>
+
+							<div class="toggletableheader smalltext white sans">
+								Priser <i class="fa gold fa-caret-down fa-caret-right"></i>
+							</div>
+							<div class="flextable flextable-column fourcol toggletable">
+								<div class="flextablerow tableheader even">
+									<div class="flextablecol"></div>
+									<div class="flextablecol"><div class="vertcenter">Typ</div></div>
+									<div class="flextablecol"><div class="vertcenter">Normal</div></div>
+									<div class="flextablecol"><div class="vertcenter">Heroic</div></div>
+								</div>
+								<div class="flextablerow uneven" id="tier">
+									<div class="flextablecol dkpitemicon"></div>
+									<div class="flextablecol"><div class="vertcenter">Tier-item</div></div>
+									<div class="flextablecol"><div class="vertcenter">20</div></div>
+									<div class="flextablecol"><div class="vertcenter">30</div></div>
+								</div>
+								<div class="flextablerow even" id="notier">
+									<div class="flextablecol dkpitemicon"></div>
+									<div class="flextablecol"><div class="vertcenter">Non-tier item</div></div>
+									<div class="flextablecol"><div class="vertcenter">10</div></div>
+									<div class="flextablecol"><div class="vertcenter">15</div></div>
+								</div>
+								<div class="flextablerow uneven" id="onehand">
+									<div class="flextablecol dkpitemicon"></div>
+									<div class="flextablecol"><div class="vertcenter">Mainhand 1-hander</div></div>
+									<div class="flextablecol"><div class="vertcenter">30</div></div>
+									<div class="flextablecol"><div class="vertcenter">45</div></div>
+								</div>
+								<div class="flextablerow even" id="twohand">
+									<div class="flextablecol dkpitemicon"></div>
+									<div class="flextablecol"><div class="vertcenter">2-hander</div></div>
+									<div class="flextablecol"><div class="vertcenter">40</div></div>
+									<div class="flextablecol"><div class="vertcenter">60</div></div>
+								</div>
+								<div class="flextablerow uneven" id="offhand">
+									<div class="flextablecol dkpitemicon"></div>
+									<div class="flextablecol"><div class="vertcenter">Off-hand</div></div>
+									<div class="flextablecol"><div class="vertcenter">10</div></div>
+									<div class="flextablecol"><div class="vertcenter">15</div></div>
+								</div>
+								<div class="flextablerow even" id="accessory">
+									<div class="flextablecol dkpitemicon"></div>
+									<div class="flextablecol"><div class="vertcenter">Ring, Neck, Back, Trinket</div></div>
+									<div class="flextablecol"><div class="vertcenter">15</div></div>
+									<div class="flextablecol"><div class="vertcenter">22</div></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="loaderwrapper" class="alliancetext hugeicons">
+					<p class="sans white smalltext">Laddar DKP...</p>
+					<i class="fa fa-cog fa-spin"></i>
+				</div>
+				<div id="dkplist">
+					<div class="sans white mediumtext" id="dkplistheader">DKP Ranking</div>	
+				</div>
+			</div>
+		</div>
+		<div id="videowrapper">
+			<div class="sans white mediumtext">Normal Highmaul</div>
+			<div class="video">
+				<div class="vertcenter"><iframe width="560" height="315" src="//www.youtube.com/embed/videoseries?list=PL3NrAItM7UJDzasQhezNc4VEGu5YJKBj9" frameborder="0" allowfullscreen></iframe></div>
+			</div>
+			<div class="sans white mediumtext">Heroic Highmaul</div>
+			<div class="video">
+				<div class="vertcenter"><iframe width="560" height="315" src="//www.youtube.com/embed/videoseries?list=PL3NrAItM7UJAFNaa_zuoWZVR-Mv5cobl1" frameborder="0" allowfullscreen></iframe></div>
+			</div>
+		</div>
+		<div id="contactwrapper">
+			<div class="sans white mediumtext">
+				Du når oss genom att:
+				<ul>
+					<li>kontakta Zorn på Neptulon-EU</li>
+					<li>e-maila threecrownsguild (at) gmail (dot) com</li>
+					<li>eller skicka ett meddelande på <a href="http://www.youtube.com/user/threecrownsguild" target="_blank">YouTube</a></li>			
+				</ul>
+			</div>
+		</div>
+		<div id="parserbuffer"></div>
+	</div>
+	</body>
+	<script>run_scripts()</script>
+</html>

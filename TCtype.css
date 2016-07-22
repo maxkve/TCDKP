@@ -1,0 +1,108 @@
+.silver{
+color:#CCCCCC;
+}
+
+.gold {
+color:#ffd700;
+}
+
+.red {
+color:#900100;
+}
+
+.white {
+color:#F0F0F0;
+}
+
+.black {
+color:#070101;
+}
+
+.largetext {
+font-size:2rem;
+}
+
+.largeicons i {
+font-size:2rem;
+}
+
+.hugeicons i {
+font-size:4rem;
+}
+
+.mediumtext {
+font-size:1.2rem;
+}
+
+.smalltext {
+font-size:1rem;
+}
+
+.tinytext {
+font-size:0.75rem;
+}
+
+.sans {
+font-family: 'Open Sans', sans-serif;
+}
+
+.serif {
+font-family:Georgia, serif;
+}
+
+#guildname {
+font-weight:800;
+text-align:center;
+}
+
+#guildname .vertcenter {
+vertical-align:bottom;
+}
+
+#guildserver {
+text-align:center;
+}
+
+#guildserver .mediumtext {
+font-weight:600;
+}
+
+#guildserver .vertcenter {
+vertical-align:top;
+}
+
+.menuitem {
+text-align:center;
+}
+
+.itemicon {
+}
+
+.itemlabel {
+font-weight:700;
+}
+
+.dkprank {
+text-align:right;
+}
+
+.dkp {
+text-align:center;
+}
+
+.raidrankwrapper {
+text-align:center;
+}
+
+.ranktext {
+-webkit-text-stroke: 0.1px black;
+text-align:center;
+}
+
+.statsitem {
+text-overflow:ellipsis;
+}
+
+.lootitem {
+text-overflow:ellipsis;
+}

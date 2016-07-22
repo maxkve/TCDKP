@@ -1,0 +1,36 @@
+/* Manually add old raiddata */
+MEMBERS["Evilzealot"].firstkills ++= 6;
+MEMBERS["Whipcream"].firstkills += 6;
+MEMBERS["Hicky"].firstkills += 6;
+MEMBERS["Wezzi"].firstkills += 6;
+MEMBERS["Ryzktprillz-Frostmane"].firstkills += 6;
+MEMBERS["Chücky"].firstkills += 6;
+MEMBERS["Foogel"].firstkills += 6;
+MEMBERS["Hanke"].firstkills += 6;
+MEMBERS["Mildh-Frostmane"].firstkills += 6;
+MEMBERS["Boyakíng"].firstkills += 6;
+MEMBERS["Zortxé"].firstkills += 6;
+MEMBERS["Totemtastic"].firstkills += 4;
+MEMBERS["Zorn"].firstkills += 6;
+MEMBERS["Ohhstar"].firstkills += 5;
+MEMBERS["Ziqfck"].firstkills += 1;
+MEMBERS["Reddax"].firstkills += 1;
+MEMBERS["Kanelbullvar-Frostmane"].firstkills += 0;
+
+MEMBERS["Evilzealot"].hcfirstkills += 1;
+MEMBERS["Whipcream"].hcfirstkills += 1;
+MEMBERS["Hicky"].hcfirstkills += 1;
+MEMBERS["Wezzi"].hcfirstkills += 1;
+MEMBERS["Ryzktprillz-Frostmane"].hcfirstkills += 1;
+MEMBERS["Chücky"].hcfirstkills += 1;
+MEMBERS["Foogel"].hcfirstkills += 1;
+MEMBERS["Hanke"].hcfirstkills += 1;
+MEMBERS["Mildh-Frostmane"].hcfirstkills += 1;
+MEMBERS["Boyakíng"].hcfirstkills += 1;
+MEMBERS["Zortxé"].hcfirstkills += 1;
+MEMBERS["Totemtastic"].hcfirstkills += 1;
+MEMBERS["Zorn"].hcfirstkills += 0;
+MEMBERS["Ohhstar"].hcfirstkills += 0;
+MEMBERS["Ziqfck"].hcfirstkills += 1;
+MEMBERS["Reddax"].hcfirstkills += 1;
+MEMBERS["Kanelbullvar-Frostmane"].hcfirstkills += 1;
